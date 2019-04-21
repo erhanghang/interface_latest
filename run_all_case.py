@@ -91,12 +91,12 @@ if __name__ == "__main__":
     # 获取最新的测试报告文件
     report_path = os.path.join(cur_path, "report")  # 用例文件夹
     report_file = get_report_file(report_path)  # 3获取最新的测试报告
-    # #邮箱配置
-    # sender = readconfig.get_email('sender')
-    # psw = readconfig.get_email('pwd')
-    # smtp_server = readconfig.get_email('stmp_server')
-    # port = readconfig.get_email('port')
-    # receivers = readconfig.get_email('receivers')
-    # send_mail(sender, psw, receivers, smtp_server, report_file, port)  # 最后一步发送报告
+    #邮箱配置
+    sender = readconfig.get_email('sender')
+    psw = readconfig.get_email('psw')
+    smtp_server = readconfig.get_email('stmp_server')
+    port = readconfig.get_email('port')
+    receivers = readconfig.get_email('receivers')
+    send_mail(sender, psw, receivers, smtp_server, report_file, port)  # 最后一步发送报告
 
 

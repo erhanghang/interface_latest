@@ -54,4 +54,5 @@ if __name__ == '__main__':
     rc = ReadConfig()
     # glzx = rc.get_http('glzx')
     # print(glzx)
-    rc.set_config('database', 'host', '测速仪')
+    #rc.set_config('database', 'host', '测速仪')
+    print(rc.get_email('pwd'))
