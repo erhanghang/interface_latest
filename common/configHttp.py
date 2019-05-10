@@ -39,9 +39,9 @@ class ConfigHttp:
         self.files = file
 
     # defined http get method
-    def get(self):
+    def data_get(self):
         try:
-            response = requests.get(self.url, params=self.params, headers=self.headers, timeout=float(timeout))
+            response = requests.get(self.url, params=self.params, headers=self.headers, verify=False, timeout=float(timeout))
             # response.raise_for_status()
             return response
         except TimeoutError:
@@ -49,10 +49,35 @@ class ConfigHttp:
             return None
 
     # defined http post method
-    def post(self):
+    def data_post(self):
         try:
-            response = requests.post(self.url, headers=self.headers, data=self.data, files=self.files, timeout=float(timeout))
+            response = requests.post(self.url, headers=self.headers, data=self.data, files=self.files, verify=False, timeout=float(timeout))
             # response.raise_for_status()
+            return response
+        except TimeoutError:
+            self.log.error("Time out!")
+            return None
+
+    def json_post(self):
+        try:
+            response = requests.post(self.url, headers=self.headers, json=self.data, files=self.files, verify=False, timeout=float(timeout))
+            # response.raise_for_status()
+            return response
+        except TimeoutError:
+            self.log.error("Time out!")
+            return None
+
+    def put(self):
+        try:
+            response = requests.put(self.url, headers=self.headers, data=self.data, files=self.files, verify=False, timeout=float(timeout))
+            return response
+        except TimeoutError:
+            self.log.error("Time out!")
+            return None
+
+    def delete(self):
+        try:
+            response = requests.delete(self.url, headers=self.headers, data=self.data, files=self.files, verify=False, timeout=float(timeout))
             return response
         except TimeoutError:
             self.log.error("Time out!")
